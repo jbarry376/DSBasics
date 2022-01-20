@@ -7,6 +7,7 @@ from datetime import time
 from datetime import datetime
 from datetime import timedelta
 from datetime import tzinfo, timezone
+import calendar
 
 
 
@@ -87,4 +88,19 @@ def show_time_formats():
   # %I/%H - 12/24 Hour, %M - minute, %S - second, %p - locale's AM/PM
   print (now.strftime("Current time: %I:%M:%S %p")) # 12-Hour:Minute:Second:AM
   print (now.strftime("24-hour time: %H:%M")) # 24-Hour:Minute
+
+# function using calendars
+# show when the first friday of each month will be 
+def friday_cal():
+    for month in range(1,13):
+        cal = calendar.monthcalendar(2022, month)
+        weekone = cal[0]
+        weektwo = cal[1]
+
+        # friday will be represented by #numbered day of the week
+        if weekone[calendar.FRIDAY] != 0: 
+            first_friday = weekone[calendar.FRIDAY]
+        else: 
+            first_friday = weektwo[calendar.FRIDAY]
+        print("%10s %2d" % (calendar.month_name[month], first_friday))
 

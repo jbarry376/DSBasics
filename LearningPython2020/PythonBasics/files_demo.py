@@ -9,6 +9,9 @@ from os import path
 import datetime 
 from datetime import date, time, timedelta
 import time 
+import shutil 
+from shutil import make_archive
+from zipfile import ZipFile
 
 # Writing Data to a Text File
 # ---------------------------------
@@ -70,3 +73,44 @@ def os_demo():
     os.remove("demofile.txt")
     print("Does the item exist?", str(path.exists("demofile.txt")))
     
+# Shell Utilities, shutil 
+# ---------------------------------
+def shutil_demo():
+    # make demo file to work with 
+    f = open("demo.txt", "w")
+    f.close() 
+
+    # make duplicate of existing file 
+    if path.exists("demo.txt"):
+        
+        # get the path of the file in current directory 
+        src = path.realpath("demo.txt")
+
+        # destination for copy w/ backup name 
+        dst = src + ".bak"
+
+        # copy file with shutil 
+        shutil.copy(src, dst)
+        # copy permissions, modification times, other info
+        shutil.copystat(src, dst)
+
+        # rename original demo file 
+        os.rename("demo.txt", "first_demo.txt")
+
+        # put EVERYTHING into a ZIP archive 
+        #root_dir, tail = path.split(src)
+        #shutil.make_archive("archive", "zip", root_dir)
+
+        # control over ZIP files 
+        # we only want the demo.txt and backup in zip archive
+        with ZipFile("testzip.zip", "w") as newzip:
+            newzip.write("first_demo.txt")
+            newzip.write("demo.txt.bak")
+
+
+    # remove all the files we just made 
+    os.remove("testzip.zip")
+    os.remove("first_demo.txt")
+    os.remove("demo.txt.bak")
+        
+

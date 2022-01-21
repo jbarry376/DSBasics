@@ -4,7 +4,14 @@
 # - OS Path   
 # --------------------------------
 
+import os
+from os import path 
+import datetime 
+from datetime import date, time, timedelta
+import time 
+
 # Writing Data to a Text File
+# ---------------------------------
 def write_demo():
     # open a file or creating if it doesn't exist
     my_file = open("demofile.txt", "w+")
@@ -41,3 +48,25 @@ def read_demo():
     except: 
         print("Cannot find demo file")
 
+# OS Path Utilities 
+# --------------------------------
+# example working with os.path module 
+def os_demo():
+    # show the name of the os 
+    print(os.name)
+
+    # make a demo file
+    f = open("demofile.txt", "w")
+    f.close() 
+    # check if the file exists, is a file
+    print("Does the item exist?", str(path.exists("demofile.txt")))
+    print("Is the item a file?", str(path.isfile("demofile.txt")))
+
+    # file modification time 
+    t = time.ctime(path.getmtime("demofile.txt"))
+    print(f"Modification Time: {t}")
+
+    # remove the file 
+    os.remove("demofile.txt")
+    print("Does the item exist?", str(path.exists("demofile.txt")))
+    

@@ -8,7 +8,7 @@ from xml.dom.minidom import parse
 
 def main():
   # use the parse() function to load and parse an XML file
-  doc = parse("milesDavis.xml")
+  doc = parse("data/milesDavis.xml")
   
   # print out the document node and the name of the first child tag
   print (doc.nodeName)

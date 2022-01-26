@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<album>
+  <albumname>Kind of Blue</albumname>
+  <artistname>Miles Davis</artistname>
+  <year>1959</year>
+  <track song="So What"/>
+  <track song="Freddie Freeloader"/>
+  <track song="Blue in Green"/>
+  <track song="All Blues"/>
+  <track song="Flamenco Sketches"/>
+</album>
